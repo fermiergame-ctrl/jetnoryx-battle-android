@@ -2,7 +2,9 @@
 
 Ce dépôt sert uniquement à distribuer l'application Android signée de JetNoryx Battle.
 
-Dans **Releases**, télécharger **JetNoryx-Battle.apk** puis l'ouvrir sur Android 7 ou plus. Un seul fichier à télécharger et installer, sans compte GitHub, sans archive à extraire. Pour mettre à jour, installer par-dessus la version existante, sans désinstaller ni effacer les données.
+[**Télécharger le fichier APK complet**](https://github.com/fermiergame-ctrl/jetnoryx-battle-android/releases/latest/download/JetNoryx-Battle.apk), puis l'ouvrir sur Android 7 ou plus. Un seul fichier à télécharger et installer, sans compte GitHub, sans archive à extraire. Pour mettre à jour, installer par-dessus la version existante, sans désinstaller ni effacer les données.
+
+L’application Android propose les dix cartes classiques. Les deux cartes secrètes restent exclusivement disponibles sur le Web.
 
 Le jeu Web reste disponible sur https://jetnoryx-battle.fermiergame.workers.dev .
 
