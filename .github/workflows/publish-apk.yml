@@ -2,7 +2,7 @@ name: Publish the signed Android APK
 on:
   push:
     branches: [main]
-    paths: ['release-input/**', 'assemble.py', '.github/workflows/publish-apk.yml']
+    paths: ['release-input/**', 'assemble.py', 'publish.py', '.github/workflows/publish-apk.yml']
   workflow_dispatch:
 permissions:
   contents: write
