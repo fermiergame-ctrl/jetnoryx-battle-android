@@ -1,0 +1,49 @@
+{
+  "applicationId": "com.fermiergame.jetnoryxbattle",
+  "assetName": "JetNoryx-Battle.apk",
+  "versionCode": 60002,
+  "versionName": "6.0.0-android.2",
+  "certificateSha256": "f9c5870261d9799007a2015652d662a60481801e662f77f4c7fd28b47a03f5ed",
+  "sha256": "3b72967e332f8e83bbb1691ce259febfc653a62ddeb18245059bd35ec0f6957f",
+  "bytes": 228941986,
+  "parts": [
+    {
+      "file": "payload/000.bin",
+      "bytes": 33554432,
+      "sha256": "8a62f6c1db557fbc4e87b0844951987395fe95fbae3be7277461f24a7d42ebeb"
+    },
+    {
+      "file": "payload/001.bin",
+      "bytes": 33554432,
+      "sha256": "0bae77e5e58ff83532e4569753f6d825ee995f9d5427c7b7826c687d9011b016"
+    },
+    {
+      "file": "payload/002.bin",
+      "bytes": 33554432,
+      "sha256": "47850a33b4c669f397ce2e03c256e8251945ef26dedcc1a9f275203575f46e37"
+    },
+    {
+      "file": "payload/003.bin",
+      "bytes": 33554432,
+      "sha256": "e81c0dac0955c05238f832c98e390c0765a44baf50def57b370ab4e8c59debab"
+    },
+    {
+      "file": "payload/004.bin",
+      "bytes": 33554432,
+      "sha256": "c34b29f2189df8250be185e40584dfd450103dd1b7cca4fd086042270397e843"
+    },
+    {
+      "file": "payload/005.bin",
+      "bytes": 33554432,
+      "sha256": "a3b6ea5d75f16eea576f8bba1abd24b620af509f52928eb17a0d60d4591e316e"
+    },
+    {
+      "file": "payload/006.bin",
+      "bytes": 27615394,
+      "sha256": "cfbf71e95dc95bb868f98181f6db64637c9b46328303b75c07612e7157534231"
+    }
+  ],
+  "webOnlyMapsExcluded": true,
+  "classicMaps": 10,
+  "storageOrigin": "https://localhost"
+}

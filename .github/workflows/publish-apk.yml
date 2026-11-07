@@ -1,0 +1,48 @@
+name: Publish the signed Android APK
+on:
+  push:
+    branches: [main]
+    paths: ['release-input/**', 'assemble.py', '.github/workflows/publish-apk.yml']
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: android-public-release
+  cancel-in-progress: false
+jobs:
+  publish:
+    if: github.repository == 'fermiergame-ctrl/jetnoryx-battle-android' && github.event.repository.private == false
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Assemble and verify the single APK
+        run: |
+          python3 assemble.py release-input release/JetNoryx-Battle.apk
+          python3 - <<'PY'
+          import json,os,pathlib
+          m=json.loads(pathlib.Path('release-input/manifest.json').read_text())
+          with open(os.environ['GITHUB_ENV'],'a') as f:
+              f.write('ANDROID_TAG=android-'+str(m['versionCode'])+'\n')
+              f.write('APK_SHA256='+m['sha256']+'\n')
+              f.write('VERSION_CODE='+str(m['versionCode'])+'\n')
+          PY
+      - name: Verify original Android signature and identity
+        run: |
+          signer=$(find "$ANDROID_HOME/build-tools" -name apksigner -type f | sort -V | tail -n 1)
+          "$signer" verify --verbose --print-certs release/JetNoryx-Battle.apk > signature.txt
+          grep -F 'certificate SHA-256 digest: f9c5870261d9799007a2015652d662a60481801e662f77f4c7fd28b47a03f5ed' signature.txt
+          aapt=$(find "$ANDROID_HOME/build-tools" -name aapt -type f | sort -V | tail -n 1)
+          "$aapt" dump badging release/JetNoryx-Battle.apk > badging.txt
+          grep -F "package: name='com.fermiergame.jetnoryxbattle' versionCode='$VERSION_CODE'" badging.txt
+          if grep -q 'application-debuggable' badging.txt; then exit 1; fi
+      - name: Publish the original APK, without a signing key
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python3 publish.py
+      - name: Verify anonymous single-file download
+        run: |
+          curl --fail --location --retry 3 --retry-all-errors "https://github.com/${GITHUB_REPOSITORY}/releases/download/${ANDROID_TAG}/JetNoryx-Battle.apk" --output downloaded.apk
+          printf '%s  downloaded.apk\n' "$APK_SHA256" | sha256sum --check

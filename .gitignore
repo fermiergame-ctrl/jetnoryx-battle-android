@@ -1,0 +1,6 @@
+release/
+downloaded.apk
+*.p12
+*.jks
+*.keystore
+.env*
